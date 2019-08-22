@@ -19,7 +19,6 @@ class usuarios extends Component {
       })
 	}
 	render() {
-		console.log(this.state.usuarios)
  	return (
  		<div>
 	 		<header>

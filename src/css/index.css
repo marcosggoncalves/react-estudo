@@ -3,7 +3,8 @@
 	padding:0;
 	margin:0;
 	font-family: 'Roboto', sans-serif;
-	 box-sizing: border-box;
+	box-sizing: border-box;
+	outline: none;
 }
 :root{
 	--color-font:#006666;
@@ -60,10 +61,35 @@ table button:hover{
 }
 
 .titulo{
-	padding:5px 5px;
+	padding:8px 8px;
 	border-left: 4px solid var(--color-font);
 	margin-bottom: 1rem;
 }
 .titulo h1{
 	font-size: 1.2rem;
+}
+.input-container{
+	display:flex;
+	flex-direction: column;
+}
+label{
+	line-height:2rem;
+}
+input[type='text']{
+	border:none;
+	padding:.8rem;
+	border-bottom: 1px solid #dedede;
+}
+.button{
+	margin-top: 2rem;
+}
+input[type='button']{
+	background:var(--color-font);
+	color:var(--color-font_2);
+	border:none;
+	padding:.7rem;
+	box-shadow: 1px 1px 1px 1px #dedede;
+}
+input:focus{
+	border-bottom: 1px solid var(--color-font);
 }
