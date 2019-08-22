@@ -78,25 +78,27 @@ class usuarios extends Component {
 	 			<div className='mensagem-salvo'>
 					<h1>{this.state.message}</h1>
 				</div>
-				<table>
-					<thead>
-						<tr>
-							<th>Nome completo </th>
-							<th>CPF</th>
-							<th>Endereço</th>
-							<th>Email</th>
-						</tr>
-					</thead>
-					<tbody id="lista_contatos">
-						{this.state.usuarios.map((usuario,i) =><tr key={i}>
-							<th>{usuario.nome_completo}</th>
-							<th>{usuario.cpf}</th>
-							<th>{usuario.endereco}</th>
-							<th>{usuario.email}</th>
-							<th><a onClick={()=>this._excluirRegistro(usuario.cpf)}>Excluir</a></th>
-						</tr>)}
-					</tbody>
-				</table>
+				<div className='table'>
+					<table>
+						<thead>
+							<tr>
+								<th>Nome completo </th>
+								<th>CPF</th>
+								<th>Endereço</th>
+								<th>Email</th>
+							</tr>
+						</thead>
+						<tbody id="lista_contatos">
+							{this.state.usuarios.map((usuario,i) =><tr key={i}>
+								<th>{usuario.nome_completo}</th>
+								<th>{usuario.cpf}</th>
+								<th>{usuario.endereco}</th>
+								<th>{usuario.email}</th>
+								<th><a onClick={()=>this._excluirRegistro(usuario.cpf)}>Excluir</a></th>
+							</tr>)}
+						</tbody>
+					</table>
+				</div>
 				<div className='btn'>
 	 				<a href='/cadastrar-cliente'><button>Cadastrar usuário</button></a>
 	 			</div>

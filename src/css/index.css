@@ -48,7 +48,7 @@ table {
 
 th, td {
     padding: 10px;
-    font-size:1rem;
+    font-size:0.6rem;
 }
 table button{
 	border:none;
@@ -76,11 +76,12 @@ button{
 	border:none;
 	background:var(--color-font);
 	color:var(--color-font_2);
-	padding:.6rem;
+	padding:.4rem;
+	font-size: 0.7rem;
 	box-shadow: 1px 1px 1px 1px var(--color-font);
 }
 .titulo h1{
-	font-size: 1.2rem;
+	font-size: .8rem;
 }
 .input-container{
 	display:flex;
@@ -101,7 +102,7 @@ input[type='button']{
 	background:var(--color-font);
 	color:var(--color-font_2);
 	border:none;
-	padding:.7rem;
+	padding:.4rem;
 	box-shadow: 1px 1px 1px 1px #dedede;
 }
 input:focus{
@@ -148,4 +149,23 @@ input[type='submit']{
 }
 .btn{
 	margin-top: 20px;
+}
+.table{
+	overflow-x: auto;
+}
+@media screen and (min-width:640px){
+	th, td {
+	 font-size:1rem;
+	}
+	button{
+		padding:0.5rem;
+	   font-size: 1rem;
+	}
+	.titulo h1{
+		font-size: 1.2rem;
+	}
+	input[type='button']{
+		padding:.7rem;
+	}
+
 }
