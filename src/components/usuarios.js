@@ -7,13 +7,46 @@ class usuarios extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-		   usuarios: []
+		   usuarios: [],
+		   message:'',
+		   pesquisa:''
 		}
 	}
- 	componentDidMount() {
+	_refresh(){
 	  axios.get("http://localhost:8001/usuarios")
       .then(res => {
         this.setState({ usuarios:res.data.usuarios });
+      }).catch((err)=>{
+      	console.log(err);
+      });
+	}
+	_inputPesquisa(event){
+		 this.setState({pesquisa:event.target.value});
+	}
+	_pesquisarUsuario(){
+		axios({
+		  method: 'get',
+		  url: 'http://localhost:8001/usuarios/pesquisa/'+this.state.pesquisa
+		}).then(res => {
+	       if(res.data.status == false){
+	       	this.setState({message:res.data.message});
+	       }else{
+	       	this.setState({usuarios:res.data.usuarios});
+	       }
+	  }).catch((err)=>{
+      	console.log(err);
+      })
+	}
+ 	componentDidMount() {
+	  this._refresh();
+	}
+	_excluirRegistro(id){
+		axios({
+		  method: 'delete',
+		  url: 'http://localhost:8001/usuarios/deletar/'+id
+		}).then(res => {
+	       this.setState({message:res.data.message});
+	       this._refresh();
       }).catch((err)=>{
       	console.log(err);
       })
@@ -28,8 +61,23 @@ class usuarios extends Component {
 	 		</header>
 	 		<div className='main' >
 	 			<div className='titulo'>
-	 				<h1>Clientes cadastrados</h1>
+		 			<div>
+						<h1>Clientes cadastrados</h1>
+		 			</div>
 	 			</div>
+	 			<div>
+	 				<form className='form-pesquisa'>
+	 					<div className='flex-1'>
+	 						<input type='text' name='pesquisa' onChange={this._inputPesquisa.bind(this)} placeholder='Pesquisar cpf:06938907110'  />
+	 					</div>
+	 					<div className='flex-2'>
+	 						<input type='button' value='Pesquisar'  onClick={()=>this._pesquisarUsuario()} />
+	 					</div>
+	 				</form>
+	 			</div>
+	 			<div className='mensagem-salvo'>
+					<h1>{this.state.message}</h1>
+				</div>
 				<table>
 					<thead>
 						<tr>
@@ -45,9 +93,13 @@ class usuarios extends Component {
 							<th>{usuario.cpf}</th>
 							<th>{usuario.endereco}</th>
 							<th>{usuario.email}</th>
+							<th><a onClick={()=>this._excluirRegistro(usuario.cpf)}>Excluir</a></th>
 						</tr>)}
 					</tbody>
 				</table>
+				<div className='btn'>
+	 				<a href='/cadastrar-cliente'><button>Cadastrar usuário</button></a>
+	 			</div>
 			</div>
 	 	</div>
  		);
