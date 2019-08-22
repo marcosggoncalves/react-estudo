@@ -23,17 +23,33 @@ class usuarios extends Component {
  	return (
  		<div>
 	 		<header>
-	 			<div>
-		 			<div>
-		 				<h1>Clientes cadastrados</h1>
-		 			</div>
-	 			</div>
+	 			<div className="Logo center">
+					<h1>Controle de clientes</h1>
+				</div>
 	 		</header>
-	 		<div>
-	 			<ul>
-		        	{this.state.usuarios.map((usuario,i) => <div  key={i}>{usuario.nome_completo}</div>)}
-		      	</ul>
-	 		</div>
+	 		<div className='main' >
+	 			<div className='titulo'>
+	 				<h1>Clientes cadastrados</h1>
+	 			</div>
+				<table>
+					<thead>
+						<tr>
+							<th>Nome completo </th>
+							<th>CPF</th>
+							<th>Endereço</th>
+							<th>Email</th>
+						</tr>
+					</thead>
+					<tbody id="lista_contatos">
+						{this.state.usuarios.map((usuario,i) =><tr key={i}>
+							<th>{usuario.nome_completo}</th>
+							<th>{usuario.cpf}</th>
+							<th>{usuario.endereco}</th>
+							<th>{usuario.email}</th>
+						</tr>)}
+					</tbody>
+				</table>
+			</div>
 	 	</div>
  		);
 	}
