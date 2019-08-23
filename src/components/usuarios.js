@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import '../css/index.css';
 import axios from 'axios';
 
-
 class usuarios extends Component {
 	constructor(props){
 		super(props);
@@ -90,11 +89,12 @@ class usuarios extends Component {
 						</thead>
 						<tbody id="lista_contatos">
 							{this.state.usuarios.map((usuario,i) =><tr key={i}>
-								<th>{usuario.nome_completo}</th>
-								<th>{usuario.cpf}</th>
-								<th>{usuario.endereco}</th>
-								<th>{usuario.email}</th>
-								<th><a onClick={()=>this._excluirRegistro(usuario.cpf)}>Excluir</a></th>
+								<td>{usuario.nome_completo}</td>
+								<td>{usuario.cpf}</td>
+								<td>{usuario.endereco}</td>
+								<td>{usuario.email}</td>
+								<td><a onClick={()=>this._excluirRegistro(usuario.cpf)}>Excluir</a></td>
+								<td><a className='a' href={`/editar-cliente/${usuario.cpf}`}>Editar</a></td>
 							</tr>)}
 						</tbody>
 					</table>
